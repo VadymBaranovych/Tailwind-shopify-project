@@ -3,6 +3,7 @@ const apiUrlPagination = 'https://voodoo-sandbox.myshopify.com/collections/all';
 
 const itemsPerPage = 12; 
 let currentPage = 1;
+let lastPage = 1;
 let currentProducts = [];
 
 async function fetchProducts(pageNumber) {
@@ -115,10 +116,15 @@ customElement.addEventListener('click', () => {
 function handleCartActions() {
 }
 
+// Отримання посилань на контейнер пагінації та на кнопку "Previous"
+const paginationContainer = document.querySelector('.pagination-container');
+const previousButton = paginationContainer.querySelector('.pagination-link');
+
   // Функція для рендерингу пагінації
   function renderPagination(totalPages) {
     const paginationContainer = document.querySelector('.pagination-container');
     paginationContainer.innerHTML = '';
+    previousButton.classList.add('hidden');
     // Додавання посилань на сторінки до пагінації
     for (let i = 1; i <= totalPages; i++) {
       const pageLink = createPaginationLink(i);
@@ -152,12 +158,65 @@ function handleCartActions() {
       const totalProducts = response.data.products.length;
       const totalPages = Math.ceil(totalProducts / itemsPerPage);
 
+      // Перевірка, чи поточна сторінка перевищує загальну кількість сторінок
+      currentPage = Math.min(currentPage, totalPages);
+
+      // Зберігання стану останньої сторінки
+      lastPage = totalPages;
+
       // Рендеринг пагінації
       renderPagination(totalPages);
-    } catch (error) {
-      console.error('Error handling pagination:', error);
+
+        // Отримуємо посилання на кнопку "Previous"
+    const prevButton = document.querySelector('.pagination-prev');
+
+    // Перевірка, чи поточна сторінка є першою
+    if (currentPage === 1) {
+      prevButton.classList.add('hidden');
+    } else {
+      prevButton.classList.remove('hidden');
     }
+
+    // Додаємо обробник події на кнопку "Previous"
+    prevButton.addEventListener('click', async () => {
+      if (currentPage > 1) {
+        currentPage--;
+        const products = await fetchProducts(currentPage);
+        renderProducts(products);
+      }
+    });
+  } catch (error) {
+    console.error('Error handling pagination:', error);
   }
+}
+// Функція для переходу на попередню сторінку
+async function goToPreviousPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    const products = await fetchProducts(currentPage);
+    renderProducts(products);
+  }
+}
+
+  paginationContainer.addEventListener('click', (event) => {
+    // Перевіряємо, чи клік був здійснений на елементі з класом "pagination-link"
+    if (event.target.classList.contains('pagination-link')) {
+      // Отримуємо текст з посилання (сторінку)
+      const pageNumber = parseInt(event.target.textContent);
+  
+      // Викликаємо функцію fetchProducts() для отримання продуктів на обраній сторінці
+      // Приклад: fetchProducts(pageNumber);
+  
+      // Перевірка, чи сторінка не є першою
+      if (pageNumber > 1) {
+        // Видаляємо клас "hidden" з кнопки "Previous", щоб вона стала видимою
+        previousButton.classList.remove('hidden');
+      } else {
+        // Якщо сторінка перша, то приховуємо кнопку "Previous" знову
+        previousButton.classList.add('hidden');
+      }
+    }
+  });
   document.addEventListener('DOMContentLoaded', () => {
     // Отримуємо посилання на контейнер пагінації
     const paginationContainer = document.querySelector('.pagination-container');
