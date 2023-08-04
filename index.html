@@ -4,90 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopify Tailwind Shop</title>
-    <!-- Підключення Tailwind CSS -->
     <link href="./style.css" rel="stylesheet">
     <link href="./reset.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
     <header class="bg-yellow-100 px-8 py-4 border-b border-black">
         <div class="container mx-auto flex justify-between items-center h-48">
             <div class="flex items-center">
-                <img src="img/logo.png" alt="VooDoo Test" class="w-11 h-11 mb-9">
+                <img src="img/logo.svg" alt="VooDoo Test" class="w-11 h-11 mb-9">
                 <h1 class="ml-3 text-black font-sans font-extrabold text-5xl w-48">VooDoo Test</h1>
             </div>
-            <div class="flex items-center pb-12">
+            <div id="cart-icon" class="flex items-center pb-12 cursor-pointer">
                 <img src="img/cart-icon.svg" alt="Cart" class="w-6 h-6">
                 <button class="ml-12 bg-black text-white px-4 py-2 rounded border font-bold">Sign-up</button>
             </div>
         </div>
     </header>
-    <!-- Body -->
     <main class="bg-yellow-100 px-8 py-4">
         <div class="container mx-auto">
-            <!-- Чорний прямокутник -->
             <div class="relative pt-20">
                 <div class="bg-black w-full grid grid-custom items-center px-4 py-2 rounded-md h-16">
-                    <!-- Знак оклику -->
                     <img src="img/alert-circle.svg" alt="Alert Circle" class="w-6 h-6 text-white mr-2">
                     <span class="text-custom-color font-semibold font-sans text-base">ALPHA</span>
                     <span class="text-custom-color font-sans text-sm">Important info regarding our service</span>
-                    <!-- Стрілка вниз -->
                     <img id="chevron-icon" src="img/chevron-down.svg" alt="Chevron Down" class="w-6 h-6 text-white ml-2 cursor-pointer transform transition-transform">
                 </div>
             </div>
-            <!-- Додаткова інформація -->
             <div id="hiddenInfo" class="bg-black p-4 mt-4 hidden rounded-md">
-                <!-- Вміст додаткової інформації -->
                 <h2 class="text-custom-color font-semibold font-sans text-base">Additional Info</h2>
                 <p class="text-custom-color font-sans text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
             <div class="grid grid-cols-4 gap-4 mt-8 products-container">
-                <!-- Product cards will be dynamically added here -->
             </div>
-            <!-- HTML -->
-            <div class="pagination-container flex select-none space-x-1 text-gray-700">
+            <div class="pagination-container flex select-none space-x-1 text-gray-700 justify-center mt-14 mb-28">
                 <a 
                     href="#" 
-                    class="pagination-link no-underline rounded-3xl px-4 py-2 bg-gray-500 transition duration-300 ease-in-out hover:bg-gray-400"
+                    class="pagination-link no-underline rounded-3xl px-4 py-2 font-sans bg-yellow-100 text-black border-solid border-black border transition duration-300 ease-in-out hover:bg-black hover:text-custom-color"
                 >Previous</a>
                 <a 
                     href="#" 
-                    class="pagination-link no-underline rounded-3xl px-4 py-2 bg-gray-500 transition duration-300 ease-in-out hover:bg-gray-400"
+                    class="pagination-link no-underline rounded-3xl px-4 py-2 font-sans bg-yellow-100 text-black border-solid border-black border transition duration-300 ease-in-out hover:bg-black hover:text-custom-color"
                 >1</a>
                 <a 
                     href="#" 
-                    class="pagination-link no-underline rounded-3xl px-4 py-2 bg-gray-500 transition duration-300 ease-in-out hover:bg-gray-400"
+                    class="pagination-link no-underline rounded-3xl px-4 py-2 font-sans bg-yellow-100 text-black border-solid border-black border transition duration-300 ease-in-out hover:bg-black hover:text-custom-color"
                 >2</a>
                 <a 
                     href="#" 
-                    class="pagination-link no-underline rounded-3xl px-4 py-2 bg-gray-500 transition duration-300 ease-in-out hover:bg-gray-400"
+                    class="pagination-link no-underline rounded-3xl px-4 py-2 font-sans bg-yellow-100 text-black border-solid border-black border transition duration-300 ease-in-out hover:bg-black hover:text-custom-color"
                 >3</a>
                 <a 
                     href="#" 
-                    class="pagination-link no-underline rounded-3xl px-4 py-2 bg-gray-500 transition duration-300 ease-in-out hover:bg-gray-400"
+                    class="pagination-link no-underline rounded-3xl px-4 py-2 font-sans bg-yellow-100 text-black border-solid border-black border transition duration-300 ease-in-out hover:bg-black hover:text-custom-color"
                 >4</a>
-                <span class="rounded-3xl px-4 py-2 bg-gray-500 transition duration-300 ease-in-out hover:bg-gray-400">...</span>
+                <span class="rounded-3xl px-4 py-2 bg-yellow-100 text-black border-solid border-black border transition duration-300 ease-in-out hover:bg-black hover:text-custom-color">...</span>
                 <a 
                     href="#" 
-                    class="pagination-link no-underline rounded-3xl px-4 py-2 bg-gray-500 transition duration-300 ease-in-out hover:bg-gray-400"
+                    class="pagination-link no-underline rounded-3xl px-4 py-2 font-sans bg-yellow-100 text-black border-solid border-black border transition duration-300 ease-in-out hover:bg-black hover:text-custom-color"
                 >25</a>
                 <a 
                     href="#" 
-                    class="pagination-link no-underline rounded-3xl px-4 py-2 bg-gray-500 transition duration-300 ease-in-out hover:bg-gray-400"
+                    class="pagination-link no-underline rounded-3xl px-4 py-2 font-sans bg-yellow-100 text-black border-solid border-black border transition duration-300 ease-in-out hover:bg-black hover:text-custom-color"
                 >Next</a>
             </div>
         </div>
     </main>
-    <!-- Footer -->
-    <footer class="bg-yellow-100 px-8 py-4">
-        <div class="container mx-auto">
-            <!-- Тут буде футер вашого сайту -->
+    <footer class="bg-white border-t border-solid px-8 py-4">
+        <div class="container mx-auto py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap- p-28 font-mono font-bold">
+            <div>
+                <img src="img/logo.svg" alt="Logo" class="h-20">
+              </div>
+              <div class="grid grid-cols-1 gap-2">
+                <a href="#" class="footer-link no-underline text-black ">FAQ</a>
+                <a href="#" class="footer-link no-underline text-black ">RETURNS</a>
+                <a href="#" class="footer-link no-underline text-black ">CONTACT</a>
+              </div>
+              <div class="grid grid-cols-1 gap-2">
+                <a href="#" class="footer-link no-underline text-black ">TERMS & CONDITIONS</a>
+                <a href="#" class="footer-link no-underline text-black ">PRIVACY POLICY</a>
+                <a href="#" class="footer-link no-underline text-black ">COOKIE POLICY</a>
+                <a href="#" class="footer-link no-underline text-black ">COOKIE SETTINGS</a>
+              </div>
+              <div class="grid grid-cols-1 gap-2">
+                <a href="#" class="footer-link no-underline text-black leading-7">ABOUT SECOND CHANCE</a>
+                <a href="#" class="footer-link no-underline text-black leading-7">CAREER</a>
+                <a href="#" class="footer-link no-underline text-black leading-7">FACEBOOK</a>
+                <a href="#" class="footer-link no-underline text-black leading-7">INSTAGRAM</a>
+              </div>
         </div>
     </footer>
-
-    <!-- Підключення JavaScript для інтерактивності -->
-    <!-- Підключення бібліотеки pagination.js з cdnjs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./script.js"></script>
